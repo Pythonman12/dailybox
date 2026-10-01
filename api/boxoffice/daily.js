@@ -2,11 +2,10 @@ const KOBIS_DAILY_URL =
   'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json';
 
 // In-memory cache for serverless invocation
-const cache = new Map<string, { timestamp: number; data: unknown }>();
+const cache = new Map();
 const CACHE_TTL_MS = 1000 * 60 * 30; // 30 minutes
 
-export default async function handler(req: any, res: any) {
-  // CORS support
+export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');

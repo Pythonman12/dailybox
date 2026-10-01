@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config({ override: true });
 import express, { type Request, type Response } from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -19,7 +20,10 @@ const movieInfoCache = new Map<string, { timestamp: number; data: unknown }>();
 const CACHE_TTL_MS = 1000 * 60 * 30; // 30 minutes
 
 function getKobisApiKey(): string {
-  const key = process.env.KOBIS_API_KEY || process.env.VITE_KOBIS_API_KEY || '';
+  let key = process.env.KOBIS_API_KEY || process.env.VITE_KOBIS_API_KEY || '';
+  if (key === 'YOUR_KOBIS_API_KEY') {
+    key = '';
+  }
   return key.trim();
 }
 

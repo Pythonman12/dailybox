@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     }
     if (!apiKey) {
       res.status(500).json({
-        error: '서버 환경변수(KOBIS_API_KEY)가 설정되지 않았습니다. Vercel 환경변수에 KOBIS_API_KEY를 등록해주세요.',
+        error: '서버 환경변수(KOBIS_API_KEY)가 설정되지 않았습니다. Vercel 프로젝트 Settings > Environment Variables에서 KOBIS_API_KEY를 등록해주세요.',
       });
       return;
     }

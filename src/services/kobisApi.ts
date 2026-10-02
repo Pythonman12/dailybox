@@ -21,7 +21,9 @@ const DIRECT_KOBIS_MOVIE_URL =
   'https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json';
 
 function getClientApiKey(): string {
-  return (import.meta.env.VITE_KOBIS_API_KEY || '').trim();
+  const key = (import.meta.env.VITE_KOBIS_API_KEY || '').trim();
+  if (key === 'YOUR_KOBIS_API_KEY') return '';
+  return key;
 }
 
 /**
